@@ -1,69 +1,72 @@
 package vn.fis.spro.customer.application.controllers;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import vn.fis.spro.common.model.request.BaseFilterDto;
-import vn.fis.spro.customer.domains.chart.model.request.ChartRequest;
+import vn.fis.spro.common.model.request.ChartRequest;
+import vn.fis.spro.customer.domains.chart.service.ChartService;
+
 
 import java.util.List;
 import java.util.Map;
 
-public class ChartController {
+@RestController
+@RequestMapping("/chart")
+public class ChartController extends BaseController {
+    private ChartService chartService;
+
     @GetMapping("/getChartActiveByUsername")
     public ResponseEntity<?> getChartActiveByAccount(@RequestParam("username") String email) {
-        //TODO
-        return null;
+        chartService.getChartActiveByAccount(email);
+        return success("");
     }
 
     @PostMapping("/getUserByEmail")
     public ResponseEntity<?> getUserByEmail(@RequestBody ChartRequest chartRequest) {
-        //TODO
-        return null;
+       chartService.getUserByEmail(chartRequest);
+       return success("");
     }
 
     @PostMapping("/loadChartFilter")
     public ResponseEntity<?> loadChartFilter(@RequestBody(required = false) LoadChartFilterRequest request) {
-        //TODO
-        return null;
+       chartService.loadChartFilter(request);
+       return success("");
     }
 
     @GetMapping("/findCompanyCodeByUsername")
     public ResponseEntity<?> findCompanyCodeByUsername(@RequestParam String username) {
-        //TODO
-        return null;
+        chartService.findCompanyCodeByUsername(username);
+        return success("");
     }
 
 
     @PostMapping("/findChartAndChartNodeCreateTicket")
     public ResponseEntity<?> findChartAndChartNodeCreateTicket(@RequestBody Map<String, Object> params) {
-        //TODO
-        return null;
+        chartService.findChartAndChartNodeCreateTicket(params);
+        return success("");
     }
 
     @GetMapping("/getAllChartActive")
     public ResponseEntity<?> getAllChartActive() {
-        //TODO
-        return null;
+        chartService.getAllChartActive();
+        return success("");
     }
 
     @GetMapping("/getCompanyCodeAndNameByUsername")
     public ResponseEntity<?> getCompanyCodeAndNameByUsername(@RequestParam String username) {
-        //TODO
-        return null;
+        chartService.getCompanyCodeAndNameByUsername(username);
+        return success("");
     }
 
     @PostMapping("/getCompanyCodeAndNameByUsernames")
     public ResponseEntity<?> getCompanyCodeAndNameByUsernames(@RequestBody List<String> usernames) {
-        //TODO
-        return null;
+        chartService.getCompanyCodeAndNameByUsernames(usernames);
+        return success("");
     }
 
     @PostMapping("/findAllCompanyCodeAndNameByCompanyCode")
     public ResponseEntity<?> getAllSystemGroup(@RequestBody BaseFilterDto req) {
-        //TODO
-        return null;
+        chartService.getAllSystemGroup(req);
+        return success("");
     }
 }

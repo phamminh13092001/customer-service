@@ -13,4 +13,8 @@ import vn.fis.spro.customer.domains.approvedbudget.service.ApprovedBudgetService
 @EnableScheduling
 public class ApprovedBudgetServiceImpl implements ApprovedBudgetService {
 
+    @Override
+    public void getAllSystemGroup() {
+
+    }
 }

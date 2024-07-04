@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import vn.fis.spro.common.model.request.ChartRequest;
 import vn.fis.spro.customer.domains.chartnode.model.request.ChartNodeDtoRequest;
+import vn.fis.spro.customer.domains.userinfo.service.UserInfoService;
 
 import javax.validation.Valid;
 
@@ -15,65 +16,65 @@ import javax.validation.Valid;
 @AllArgsConstructor
 public class UserInfoController extends BaseController {
 
+    private  UserInfoService userInfoService;
 
     @GetMapping("/getByUsername")
     public ResponseEntity<?> getUserByUsername(@RequestParam("username") String username) {
-        //TODO
-        return null;
+        userInfoService.getUserByUsername(username);
+        return success("");
     }
 
     @GetMapping("/getEmailByUsername")
     public ResponseEntity<?> getEmailByUsername(@RequestParam("username") String username) {
-        //TODO
-        return null;
+       userInfoService.getEmailByUsername(username);
+       return success("");
     }
 
     @PostMapping("/getByEmails")
     public ResponseEntity<?> getUserInfoByEmails(@RequestBody NotifyUserRequest request) {
-        //TODO
-        return null;
+        userInfoService.getUserInfoByEmails(request);
+        return success("");
     }
 
     @PostMapping("/getByUserNames")
     public ResponseEntity<?> getUserInfoByUserNames(@RequestBody NotifyUserRequest request) {
-        //TODO
-        return null;
+        userInfoService.getUserInfoByUserNames(request);
+        return success("");
     }
 
     @PostMapping("/getUserTaskInfoByUserNames")
     public ResponseEntity<?> getUserTaskInfoByUserNames(@RequestBody NotifyUserRequest request) {
-        //TODO
-        return null;
+        userInfoService.getUserTaskInfoByUserNames(request);
+        return success("");
     }
 
     @PostMapping("/getUserInfoByChartIdAndCharNodeIds")
     public ResponseEntity<?> getUserInfoByChartIdAndCharNodeIds(@RequestBody ChartNodeDtoRequest request) {
-        //TODO
-        return null;
+        userInfoService.getUserInfoByChartIdAndCharNodeIds(request);
+        return success("");
     }
 
     @GetMapping("/checkStartPhase")
     public ResponseEntity<?> checkStartPhase(@RequestParam("procDefId") String procDefId, @RequestParam("taskDefKey") String taskDefKey, @RequestHeader("Authorization") String token) {
-        //TODO
-        return null;
+        userInfoService.checkStartPhase(procDefId,taskDefKey,token);
+        return success("");
     }
 
     @GetMapping("/getAutoAssign/{value}")
     public ResponseEntity<?> getAutoAssign(@PathVariable String value, @RequestHeader("Authorization") String token) {
-        //TODO
-        return null;
+        userInfoService.getAutoAssign(value,token);
+        return success("");
     }
 
     @GetMapping("/getUserEmailByTenant")
     public ResponseEntity<?> getUserEmailByTenant() {
-        //TODO
-        return null;
+        userInfoService.getUserEmailByTenant();
+        return success("");
     }
 
     @GetMapping("/getAllAccount")
     public ResponseEntity<?> getAllAccount() {
-        //TODO
-        return null;
+
     }
 
     @GetMapping("/getAssistantByChartNode")
