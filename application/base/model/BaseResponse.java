@@ -5,6 +5,7 @@ import vn.fis.spro.customer.application.exceptions.BusinessCode;
 import vn.fis.spro.customer.application.exceptions.BusinessException;
 import vn.fis.spro.customer.application.exceptions.ResponseStatus;
 
+
 @Data
 public class BaseResponse<T> {
     private String code;

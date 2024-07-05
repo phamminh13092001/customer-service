@@ -1,27 +1,32 @@
 package vn.fis.spro.customer.application.controllers;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
+import vn.fis.spro.customer.domains.workingtime.service.WorkingTimeService;
 
+import java.time.LocalDateTime;
 
-public class WorkingTimeController {
+@RestController
+@RequestMapping("/working-time")
+public class WorkingTimeController extends BaseController {
+    private WorkingTimeService workingTimeService;
+
     @PostMapping("/getListTimeResponse")
     public ResponseEntity<?> getListTime(@RequestBody List<ListTimeExpectRequest> listTimeExpectRequests) {
-        //TODO
-        return null;
+        workingTimeService.getListTime(listTimeExpectRequests);
+        return success("");
     }
 
-    @PostMapping("/getListTimeResponse")
-    public ResponseEntity<?> getListTime(@RequestBody List<ListTimeExpectRequest> listTimeExpectRequests) {
-        //TODO
-        return null;
+    @GetMapping("/timeResponse")
+    public ResponseEntity<?> caculTime(@RequestParam("timeCreate") Long startDateTicket, @RequestParam("timeRes") long timeRes, @RequestParam(required = false, value = "emailAssignee") String emailAssignee) {
+        workingTimeService.caculTime(startDateTicket,timeRes,emailAssignee);
+        return success("");
     }
 
     @PostMapping("/getListTimeExpect")
     public ResponseEntity<?> getListTimeExpect(@RequestBody List<ListTimeExpectRequest> listTimeExpectRequests) {
-        //TODO
-        return null;
+        workingTimeService.getListTimeExpect(listTimeExpectRequests);
+        return success("");
     }
 
 }

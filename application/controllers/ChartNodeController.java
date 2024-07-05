@@ -6,29 +6,33 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import vn.fis.spro.customer.domains.chartnode.model.request.ChartNodeDtoRequest;
+import vn.fis.spro.customer.domains.chartnode.service.ChartNodeService;
 
-public class ChartNodeController {
+
+public class ChartNodeController extends BaseController {
+
+    private ChartNodeService chartNodeService;
     @GetMapping("/getChartNodeByChartId")
     public ResponseEntity<?> getChartNodeByChartId(@RequestParam("chartId") Long chartId) {
-        //TODO
-        return null;
+        chartNodeService.getChartNodeByChartId(chartId);
+        return success("");
     }
 
     @PostMapping("/getCharNodeByCodes")
     public ResponseEntity<?> getCharNodeByCodes(@RequestBody ChartNodeDtoRequest request) {
-        //TODO
-        return null;
+        chartNodeService.getCharNodeByCodes(request);
+        return success("");
     }
 
     @PostMapping("/listChildCompanyCodeByParentCode")
     public ResponseEntity<?> listChildCompanyCodeByParentCode(@RequestBody ChartNodeDtoRequest request) {
-        //TODO
-        return null;
+        chartNodeService.listChildCompanyCodeByParentCode(request);
+        return success("");
     }
 
     @GetMapping("/loadChartNodeFilter")
     public ResponseEntity<?> loadChartNodeFilter() {
-        //TODO
-        return null;
+        chartNodeService.loadChartNodeFilter();
+        return success("");
     }
 }
