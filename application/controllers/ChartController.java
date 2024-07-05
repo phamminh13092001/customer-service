@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import vn.fis.spro.common.model.request.BaseFilterDto;
 import vn.fis.spro.common.model.request.ChartRequest;
+import vn.fis.spro.customer.domains.chart.model.request.LoadChartFilterRequest;
 import vn.fis.spro.customer.domains.chart.service.ChartService;
 
 
