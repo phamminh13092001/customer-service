@@ -3,6 +3,9 @@ package vn.fis.spro.customer.domains.userinfo.service.impl;
 import org.springframework.stereotype.Service;
 import vn.fis.spro.common.model.request.ChartRequest;
 import vn.fis.spro.customer.domains.chartnode.model.request.ChartNodeDtoRequest;
+import vn.fis.spro.customer.domains.userinfo.model.request.NotifyUserRequest;
+import vn.fis.spro.customer.domains.userinfo.model.response.ListShareWithResponse;
+import vn.fis.spro.customer.domains.userinfo.model.response.UserInfoResponse;
 import vn.fis.spro.customer.domains.userinfo.service.UserInfoService;
 
 @Service
@@ -99,7 +102,7 @@ public class UserInfoImplement implements UserInfoService {
     }
 
     @Override
-    public void getUserDefault(UserInfoDto userInfoDto) {
+    public void getUserDefault(UserInfoResponse userInfoResponse) {
 
     }
 

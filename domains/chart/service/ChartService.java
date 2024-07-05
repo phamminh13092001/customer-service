@@ -2,6 +2,7 @@ package vn.fis.spro.customer.domains.chart.service;
 
 import vn.fis.spro.common.model.request.BaseFilterDto;
 import vn.fis.spro.common.model.request.ChartRequest;
+import vn.fis.spro.customer.domains.chart.model.request.LoadChartFilterRequest;
 
 import java.util.List;
 import java.util.Map;

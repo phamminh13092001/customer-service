@@ -3,6 +3,7 @@ package vn.fis.spro.customer.domains.chart.service.impl;
 import org.springframework.stereotype.Service;
 import vn.fis.spro.common.model.request.BaseFilterDto;
 import vn.fis.spro.common.model.request.ChartRequest;
+import vn.fis.spro.customer.domains.chart.model.request.LoadChartFilterRequest;
 import vn.fis.spro.customer.domains.chart.service.ChartService;
 
 import java.util.List;
