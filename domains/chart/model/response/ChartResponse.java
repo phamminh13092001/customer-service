@@ -2,17 +2,26 @@ package vn.fis.spro.customer.domains.chart.model.response;
 
 import lombok.Data;
 
+import java.time.Instant;
 import java.util.Date;
 @Data
 public class ChartResponse {
-    private Long chartId;
+    private Long id;
+    private String code;
+    private String companyCode;
     private String name;
+    private String shortName;
+    private String type;
     private String description;
     private String status;
-    private Date createdDate;
+    private Integer userTotal;
+    private Integer linkTotal;
+    private String version;
+    private String errorMessage;
+    private Instant createdDate;
     private String createdUser;
-    private Date modifiedDate;
+    private Instant modifiedDate;
     private String modifiedUser;
-    private Integer maxSize;
-    private Integer currSize;
+    private String parentCompanyCode;
+
 }

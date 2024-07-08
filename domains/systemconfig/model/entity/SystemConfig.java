@@ -1,58 +1,77 @@
 package vn.fis.spro.customer.domains.systemconfig.model.entity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import javax.validation.constraints.Size;
+import java.time.Instant;
 
-@Data
+@Getter
+@Setter
 @Entity
-@Table(name = "system_config")
+@Table(name = "system_config", schema = "customer")
 public class SystemConfig {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Column(name = "id", nullable = false)
+    private Long id;
 
     @Column(name = "chart_id")
     private Long chartId;
 
-    @Column(name = "config_information")
+    @Size(max = 50)
+    @Column(name = "config_information", length = 50)
     private String configInformation;
 
-    @Column(name = "server_type")
+    @Size(max = 50)
+    @Column(name = "server_type", length = 50)
     private String serverType;
 
-    @Column(name = "config_code")
+    @Size(max = 200)
+    @Column(name = "config_code", length = 200)
     private String configCode;
 
-    @Column(name = "config_name")
+    @Size(max = 500)
+    @Column(name = "config_name", length = 500)
     private String configName;
 
+    @Lob
     @Column(name = "config_value")
     private String configValue;
 
-    @Column(name = "description")
+    @Size(max = 4000)
+    @Column(name = "description", length = 4000)
     private String description;
 
     @Column(name = "created_date")
-    private LocalDateTime createdDate;
+    private Instant createdDate;
 
-    @Column(name = "created_user")
+    @Size(max = 45)
+    @Column(name = "created_user", length = 45)
     private String createdUser;
 
     @Column(name = "modified_date")
-    private LocalDateTime modifiedDate;
+    private Instant modifiedDate;
 
-    @Column(name = "modified_user")
+    @Size(max = 45)
+    @Column(name = "modified_user", length = 45)
     private String modifiedUser;
 
-    @Column(name = "status")
+    @Size(max = 10)
+    @Column(name = "status", length = 10)
     private String status;
 
-    @Column(name = "note")
+    @Size(max = 4000)
+    @Column(name = "note", length = 4000)
     private String note;
-    @Column(name = "company_code")
+
+    @Size(max = 200)
+    @Column(name = "company_code", length = 200)
     private String companyCode;
-    @Column(name = "company_name")
+
+    @Size(max = 200)
+    @Column(name = "company_name", length = 200)
     private String companyName;
+
 }

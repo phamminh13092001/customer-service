@@ -5,7 +5,6 @@ import vn.fis.spro.common.model.request.ChartRequest;
 import vn.fis.spro.customer.domains.chartnode.model.request.ChartNodeDtoRequest;
 import vn.fis.spro.customer.domains.userinfo.model.request.NotifyUserRequest;
 import vn.fis.spro.customer.domains.userinfo.model.response.ListShareWithResponse;
-import vn.fis.spro.customer.domains.userinfo.model.response.UserInfoResponse;
 import vn.fis.spro.customer.domains.userinfo.service.UserInfoService;
 
 @Service
@@ -102,7 +101,7 @@ public class UserInfoImplement implements UserInfoService {
     }
 
     @Override
-    public void getUserDefault(UserInfoResponse userInfoResponse) {
+    public void getUserDefault(UserInfoDto userInfoDto) {
 
     }
 

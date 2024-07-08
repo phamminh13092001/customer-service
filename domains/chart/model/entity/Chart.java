@@ -1,90 +1,82 @@
 package vn.fis.spro.customer.domains.chart.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.Data;
-import vn.fis.spro.customer.domains.chartnode.model.entity.ChartNode;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.time.Instant;
 
-@Data
+@Getter
+@Setter
 @Entity
-@Table(name = "chart")
+@Table(name = "chart", schema = "customer")
 public class Chart {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "code", nullable = true)
+    @Size(max = 255)
+    @NotNull
+    @Column(name = "code", nullable = false)
     private String code;
 
-    @Column(name = "company_code", nullable = true)
+    @Size(max = 10)
+    @Column(name = "company_code", length = 10)
     private String companyCode;
 
-    @Column(name = "name", nullable = true)
+    @Size(max = 100)
+    @Column(name = "name", length = 100)
     private String name;
 
-    @Column(name = "short_name", nullable = true)
+    @Size(max = 100)
+    @Column(name = "short_name", length = 100)
     private String shortName;
 
-    @Column(name = "type", nullable = true)
+    @Size(max = 10)
+    @Column(name = "type", length = 10)
     private String type;
 
-    @Column(name = "description", nullable = true)
+    @Size(max = 200)
+    @Column(name = "description", length = 200)
     private String description;
 
-    /**
-     * active, inactive, processing, error
-     */
-    @Column(name = "status", nullable = true)
+    @Size(max = 30)
+    @Column(name = "status", length = 30)
     private String status;
 
-    @Column(name = "user_total", nullable = true)
+    @Column(name = "user_total")
     private Integer userTotal;
 
-    @Column(name = "link_total", nullable = true)
+    @Column(name = "link_total")
     private Integer linkTotal;
 
-    @Column(name = "version", nullable = true)
+    @Size(max = 10)
+    @Column(name = "version", length = 10)
     private String version;
 
-    @Column(name = "error_message", nullable = true)
+    @Size(max = 100)
+    @Column(name = "error_message", length = 100)
     private String errorMessage;
 
-    @Column(name = "created_date", nullable = true)
-    private LocalDateTime createdDate;
+    @Column(name = "created_date")
+    private Instant createdDate;
 
-    @Column(name = "created_user", nullable = true)
+    @Size(max = 50)
+    @Column(name = "created_user", length = 50)
     private String createdUser;
 
-    @Column(name = "modified_date", nullable = true)
-    private LocalDateTime modifiedDate;
+    @Column(name = "modified_date")
+    private Instant modifiedDate;
 
-    @Column(name = "modified_user", nullable = true)
+    @Size(max = 50)
+    @Column(name = "modified_user", length = 50)
     private String modifiedUser;
 
-    @Column(name = "parent_company_code", nullable = true)
+    @Size(max = 50)
+    @Column(name = "parent_company_code", length = 50)
     private String parentCompanyCode;
 
-//   parentCompanyCode @OneToMany(mappedBy = "chart", fetch = FetchType.LAZY)
-//    private List<ChartSharedUser> chartSharedUsers;
-
-    @OneToMany(mappedBy = "chart", fetch = FetchType.LAZY)
-    @JsonManagedReference
-    private List<ChartNode> chartNodes = new ArrayList<>();
-
-    @PrePersist
-    private void prePersist() {
-        setCreatedDate(LocalDateTime.now());
-        setModifiedDate(LocalDateTime.now());
-    }
-
-    @PreUpdate
-    private void preUpdate() {
-        setModifiedDate(LocalDateTime.now());
-    }
 }

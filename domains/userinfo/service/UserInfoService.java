@@ -4,7 +4,6 @@ import vn.fis.spro.common.model.request.ChartRequest;
 import vn.fis.spro.customer.domains.chartnode.model.request.ChartNodeDtoRequest;
 import vn.fis.spro.customer.domains.userinfo.model.request.NotifyUserRequest;
 import vn.fis.spro.customer.domains.userinfo.model.response.ListShareWithResponse;
-import vn.fis.spro.customer.domains.userinfo.model.response.UserInfoResponse;
 
 public interface UserInfoService {
 
@@ -44,7 +43,7 @@ public interface UserInfoService {
 
     void getInfoAssignee(String username);
 
-    void getUserDefault(UserInfoResponse userInfoResponse);
+    void getUserDefault(UserInfoDto userInfoDto);
 
     void getUserDefaultByChart(String username, String status);
 

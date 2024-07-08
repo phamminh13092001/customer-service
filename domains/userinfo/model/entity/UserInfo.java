@@ -1,127 +1,108 @@
 package vn.fis.spro.customer.domains.userinfo.model.entity;
 
-import lombok.Data;
-import lombok.ToString;
-import vn.fis.spro.common.util.JSONObjectConverter;
-import vn.fis.spro.customer.domains.usertitle.model.entity.UserTitle;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
+@Getter
+@Setter
 @Entity
-@Table(name = "user_info")
-@Data
+@Table(name = "user_info", schema = "customer")
 public class UserInfo {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "location_id", nullable = true)
+    @Column(name = "location_id")
     private Long locationId;
 
-    @Column(name = "staff_code", nullable = true)
+    @Column(name = "has_secretary")
+    private Byte hasSecretary;
+
+    @Size(max = 15)
+    @Column(name = "staff_code", length = 15)
     private String staffCode;
 
-    @Column(name = "firstname", nullable = true)
+    @Size(max = 50)
+    @Column(name = "firstname", length = 50)
     private String firstname;
 
-    @Column(name = "lastname", nullable = true)
+    @Size(max = 50)
+    @Column(name = "lastname", length = 50)
     private String lastname;
 
-    @Column(name = "email", nullable = true)
+    @Size(max = 100)
+    @Column(name = "email", length = 100)
     private String email;
 
-    @Column(name = "phone", nullable = true)
+    @Size(max = 15)
+    @Column(name = "phone", length = 15)
     private String phone;
 
-    /**
-     * active, inactive
-     */
-    @Column(name = "status", nullable = true)
+    @Size(max = 30)
+    @Column(name = "status", length = 30)
     private String status;
 
-    /**
-     * done, notyet
-     */
-    @Column(name = "handover_status", nullable = true)
+    @Size(max = 10)
+    @Column(name = "handover_status", length = 10)
     private String handoverStatus;
 
     @Column(name = "available")
     private Boolean available;
 
-    @Column(columnDefinition = "json")
-    @Convert(converter = JSONObjectConverter.class)
-    private Map<String, Object> addition;
+    @Lob
+    @Column(name = "addition")
+    private String addition;
 
-    @Column(name = "direct_manager", nullable = true)
+    @Size(max = 100)
+    @Column(name = "direct_manager", length = 100)
     private String directManager;
 
-    @Column(name = "vice_manager", nullable = true)
+    @Size(max = 100)
+    @Column(name = "vice_manager", length = 100)
     private String viceManager;
 
-    @Column(name = "id_card_no", nullable = true)
+    @Size(max = 45)
+    @Column(name = "id_card_no", length = 45)
     private String idCardNo;
 
-    @Column(name = "id_card_issued_date", nullable = true)
-    private Date idCardIssuedDate;
-    @Column(name = "id_card_issuer", nullable = true)
+    @Column(name = "id_card_issued_date")
+    private LocalDate idCardIssuedDate;
+
+    @Size(max = 100)
+    @Column(name = "id_card_issuer", length = 100)
     private String idCardIssuer;
 
-    @Column(name = "description", nullable = true)
+    @Size(max = 255)
+    @Column(name = "description")
     private String description;
 
-    @Column(name = "created_user", nullable = true)
+    @Size(max = 50)
+    @Column(name = "created_user", length = 50)
     private String createdUser;
 
-    @Column(name = "created_date", nullable = true)
+    @Column(name = "created_date")
     private LocalDate createdDate;
 
-    @Column(name = "modified_date", nullable = true)
+    @Column(name = "modified_date")
     private LocalDate modifiedDate;
 
-    @Column(name = "modified_user", nullable = true)
+    @Size(max = 50)
+    @Column(name = "modified_user", length = 50)
     private String modifiedUser;
-
-    @Column(name = "has_secretary", nullable = true)
-    private Integer hasSecretary;
 
     @Column(name = "assignment")
     private Boolean assignment;
 
-    @Column(name = "working_type")
+    @Size(max = 10)
+    @Column(name = "working_type", length = 10)
     private String workingType;
 
     @Column(name = "multi_chart_approval")
     private Boolean multiChartApproval;
-
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_info_id", nullable = true)
-    @ToString.Exclude
-    private List<UserTitle> userTitles;
-//
-//    @OneToMany(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "user_info_id", nullable = true)
-//    @ToString.Exclude
-//    private List<Account> accountInfo;
-//
-//    @OneToMany(mappedBy = "userInfo", fetch = FetchType.LAZY)
-//    @JsonIgnore
-//    private Set<CustomFlowUser> customFlowUsers;
-
-    @PrePersist
-    private void prePersist() {
-        setCreatedDate(LocalDate.now());
-        setModifiedDate(LocalDate.now());
-    }
-
-    @PreUpdate
-    private void preUpdate() {
-        setModifiedDate(LocalDate.now());
-    }
 
 }

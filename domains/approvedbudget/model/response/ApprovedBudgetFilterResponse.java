@@ -4,18 +4,27 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+import java.time.Instant;
+import java.time.LocalDate;
+
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class ApprovedBudgetFilterResponse {
-    private String username;
-    private Long chartId;
-    private Long chartNodeId;
+    private Long id;
+    private String approvedBudgetName;
+    private Integer level;
+    private Integer type;
     private String position;
-    private String jobTitle;
-    private String chartName;
-    private String chartNodeName;
-    private String firstname;
-    private String lastname;
-    private String titleName;
+    private String title;
+    private String username;
+    private BigDecimal budgetFrom;
+    private BigDecimal budgetTo;
+    private LocalDate effectiveDate;
+    private LocalDate expiredDate;
+    private Instant createdDate;
+    private String createdUser;
+    private Instant modifiedDate;
+    private String modifiedUser;
+    private Byte status;
+
 }

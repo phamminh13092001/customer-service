@@ -1,16 +1,12 @@
 package vn.fis.spro.customer.domains.systemconfig.model.response;
 
-import lombok.Builder;
 import lombok.Data;
+import java.time.Instant;
 
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
-@Builder
 public class SystemConfigResponse {
-
-    private Integer id;
+    private Long id;
     private Long chartId;
     private String configInformation;
     private String serverType;
@@ -18,14 +14,14 @@ public class SystemConfigResponse {
     private String configName;
     private String configValue;
     private String description;
-    private List<String> applyFor;
-    private LocalDateTime createdDate;
+    private Instant createdDate;
     private String createdUser;
-    private LocalDateTime modifiedDate;
+    private Instant modifiedDate;
     private String modifiedUser;
     private String status;
-    private List<String> shareWith;
     private String note;
-    private String companyName;
     private String companyCode;
+    private String companyName;
+
+
 }

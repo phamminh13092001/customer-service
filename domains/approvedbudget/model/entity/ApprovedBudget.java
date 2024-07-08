@@ -1,21 +1,27 @@
 package vn.fis.spro.customer.domains.approvedbudget.model.entity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
+@Getter
+@Setter
 @Entity
-@Table(name = "approved_budget")
-@Data
+@Table(name = "approved_budget", schema = "customer")
 public class ApprovedBudget {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
+
+    @Size(max = 200)
+    @Column(name = "approved_budget_name", length = 200)
+    private String approvedBudgetName;
 
     @Column(name = "level")
     private Integer level;
@@ -48,21 +54,20 @@ public class ApprovedBudget {
     private LocalDate expiredDate;
 
     @Column(name = "created_date")
-    private LocalDateTime createDate;
+    private Instant createdDate;
 
-    @Column(name = "created_user")
-    private String createUser;
+    @Size(max = 45)
+    @Column(name = "created_user", length = 45)
+    private String createdUser;
 
     @Column(name = "modified_date")
-    private LocalDateTime modifiedDate;
+    private Instant modifiedDate;
 
-    @Column(name = "modified_user")
+    @Size(max = 45)
+    @Column(name = "modified_user", length = 45)
     private String modifiedUser;
 
     @Column(name = "status")
-    private Integer status;
-
-    @Column(name = "approved_budget_name", length = 50)
-    private String approvedBudgetName;
+    private Byte status;
 
 }

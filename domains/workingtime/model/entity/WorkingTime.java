@@ -1,72 +1,88 @@
 package vn.fis.spro.customer.domains.workingtime.model.entity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
+import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
 @Entity
-@Table(name = "working_time")
+@Table(name = "working_time", schema = "customer")
 public class WorkingTime {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "name", nullable = true)
+    @Size(max = 100)
+    @Column(name = "name", length = 100)
     private String name;
 
-    @Column(name = "description", nullable = true)
-    private String description;
-
-    @Column(name = "timezone", nullable = true)
-    private String timezone;
-
-    @Column(name = "start_time", nullable = true)
-    private String startTime;
-
-    @Column(name = "saturday_working", nullable = true)
-    private String saturdayWorking;
-
-    @Column(name = "sunday_working", nullable = true)
-    private String sundayWorking;
-
-    @Column(name = "morning_working", nullable = true)
-    private Double morningWorking;
-
-    @Column(name = "lunch_break", nullable = true)
-    private Double lunchBreak;
-
-    @Column(name = "afternoon_working", nullable = true)
-    private Double afternoonWorking;
-
-    @Column(name = "vacation", nullable = true)
-    private String vacation;
-
-    @Column(name = "created_date", nullable = true)
-    private LocalDateTime createdDate;
-
-    @Column(name = "created_user", nullable = true)
-    private String createdUser;
-
-    @Column(name = "modified_date", nullable = true)
-    private LocalDate modifiedDate;
-
-    @Column(name = "modified_user", nullable = true)
-    private String modifiedUser;
-
-    @Column(name = "work_schedule_code", nullable = true)
+    @Size(max = 45)
+    @Column(name = "work_schedule_code", length = 45)
     private String workScheduleCode;
 
-    @Column(name = "share_with", nullable = true)
-    private String shareWith;
-    @Column(name = "company_code")
-    private String companyCode;
-    @Column(name = "company_name")
-    private String companyName;
+    @Size(max = 200)
+    @Column(name = "description", length = 200)
+    private String description;
 
+    @Size(max = 100)
+    @Column(name = "timezone", length = 100)
+    private String timezone;
+
+    @Size(max = 20)
+    @Column(name = "start_time", length = 20)
+    private String startTime;
+
+    @Size(max = 100)
+    @Column(name = "saturday_working", length = 100)
+    private String saturdayWorking;
+
+    @Size(max = 100)
+    @Column(name = "sunday_working", length = 100)
+    private String sundayWorking;
+
+    @Column(name = "morning_working")
+    private Double morningWorking;
+
+    @Column(name = "lunch_break")
+    private Double lunchBreak;
+
+    @Column(name = "afternoon_working")
+    private Double afternoonWorking;
+
+    @Size(max = 1000)
+    @Column(name = "vacation", length = 1000)
+    private String vacation;
+
+    @Column(name = "created_date")
+    private Instant createdDate;
+
+    @Size(max = 100)
+    @Column(name = "created_user", length = 100)
+    private String createdUser;
+
+    @Column(name = "modified_date")
+    private LocalDate modifiedDate;
+
+    @Size(max = 50)
+    @Column(name = "modified_user", length = 50)
+    private String modifiedUser;
+
+    @Size(max = 1000)
+    @Column(name = "share_with", length = 1000)
+    private String shareWith;
+
+    @Size(max = 200)
+    @Column(name = "company_code", length = 200)
+    private String companyCode;
+
+    @Size(max = 200)
+    @Column(name = "company_name", length = 200)
+    private String companyName;
 
 }
