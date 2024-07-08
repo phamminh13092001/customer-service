@@ -8,7 +8,6 @@ import vn.fis.spro.common.model.request.ChartRequest;
 import vn.fis.spro.customer.domains.chartnode.model.request.ChartNodeDtoRequest;
 import vn.fis.spro.customer.domains.userinfo.model.request.NotifyUserRequest;
 import vn.fis.spro.customer.domains.userinfo.model.response.ListShareWithResponse;
-import vn.fis.spro.customer.domains.userinfo.model.response.UserInfoResponse;
 import vn.fis.spro.customer.domains.userinfo.service.UserInfoService;
 
 import javax.validation.Valid;
@@ -134,8 +133,8 @@ public class UserInfoController extends BaseController {
 
     //FE call
     @PostMapping("/getUserDefault")
-    public ResponseEntity<?> getUserDefault(@RequestBody(required = false) UserInfoResponse userInfoResponse) {
-        userInfoService.getUserDefault(userInfoResponse);
+    public ResponseEntity<?> getUserDefault(@RequestBody(required = false) UserInfoDto userInfoDto) {
+        userInfoService.getUserDefault(userInfoDto);
         return success("");
     }
 
